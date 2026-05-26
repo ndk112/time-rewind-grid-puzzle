@@ -1,0 +1,32 @@
+export const TRANSLATIONS = {
+  zh: {
+    audioOn: '音效开启',
+    audioOff: '音效静音',
+    helpBtn: '特工手册',
+    settingsBtn: '系统面板',
+    replayBtn: '再练一次',
+    nextBtn: '下一悖论',
+    returnBtn: '返回第一关',
+    victoryTitle: '时空悖论破译成功',
+    victorySubtitle: '时间维度的不稳定性已消除',
+    settingsTitle: '系统设置',
+    closeBtn: '关闭',
+    guideWelcome: '欢迎进入高维时间重演模拟器。为了完成任务，你需要和「过去的影子」通力协作。',
+    focusOverlayText: '点击游戏画面激活快捷键',
+  },
+  en: {
+    audioOn: 'Audio Enabled',
+    audioOff: 'Audio Muted',
+    helpBtn: 'Field Manual',
+    settingsBtn: 'Control Panel',
+    replayBtn: 'Replay Zone',
+    nextBtn: 'Next Paradox',
+    returnBtn: 'Return Zone 01',
+    victoryTitle: 'Temporal Paradox Resolved',
+    victorySubtitle: 'Instability of higher dimensional frames eliminated',
+    settingsTitle: 'Setting',
+    closeBtn: 'Close',
+    guideWelcome: 'Welcome to the temporal simulator, Agent. To resolve paradoxical grids, you must collaborate with your past records.',
+    focusOverlayText: 'Click to activate shortcuts',
+  }
+};

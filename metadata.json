@@ -1,0 +1,6 @@
+{
+  "name": "Time Rewind Grid Puzzle",
+  "description": "一个基于网格移动与时间回溯影子重放机制的物理机关解谜游戏，用克隆体协同开启机关通关。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
