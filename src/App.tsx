@@ -519,9 +519,9 @@ export default function App() {
 
       {/* 创意模式工具栏 */}
       {creativeMode && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 bg-[#0f172a]/95 backdrop-blur-sm rounded-2xl p-3 border border-white/5 shadow-xl">
-          {/* 笔刷面板 */}
-          <div className="flex items-center gap-1.5">
+        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-30 flex items-center gap-2 bg-[#0f172a]/95 backdrop-blur-sm rounded-2xl p-3 border border-white/5 shadow-xl">
+          {/* 第1列：笔刷 */}
+          <div className="flex flex-col items-center gap-1.5">
             {[
               { label: '🧱', brush: '#', title: language === 'zh' ? '墙壁' : 'Wall' },
               { label: '📍', brush: 'S', title: language === 'zh' ? '起点' : 'Start' },
@@ -542,7 +542,11 @@ export default function App() {
                 {item.label}
               </button>
             ))}
-            <span className="w-px h-8 bg-white/10 mx-1" />
+          </div>
+          <span className="w-px h-full bg-white/10" />
+          {/* 第2列：按钮 */}
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[8px] font-bold text-slate-500 tracking-widest">{language === 'zh' ? '按钮' : 'Btn'}</span>
             {[1,2,3,4,5,6,7,8,9].map((id) => (
               <button
                 key={`B${id}`}
@@ -555,7 +559,11 @@ export default function App() {
                 title={`Button ${id}`}
               >{`B${id}`}</button>
             ))}
-            <span className="w-px h-8 bg-white/10 mx-1" />
+          </div>
+          <span className="w-px h-full bg-white/10" />
+          {/* 第3列：门 */}
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-[8px] font-bold text-slate-500 tracking-widest">{language === 'zh' ? '门' : 'Door'}</span>
             {[1,2,3,4,5,6,7,8,9].map((id) => (
               <button
                 key={`D${id}`}
@@ -569,32 +577,39 @@ export default function App() {
               >{`D${id}`}</button>
             ))}
           </div>
+          <span className="w-px h-full bg-white/10" />
+          {/* 第4列：操作 */}
+          <div className="flex flex-col items-center gap-2">
 
           {/* 操作按钮 */}
-          <div className="flex items-center gap-2 w-full justify-center">
-            <div className="flex items-center gap-1 text-[10px] text-slate-500">
-              <span>{language === 'zh' ? '行' : 'Rows'}</span>
-              <input
-                type="number" min={3} max={20}
-                value={gridRows}
-                onChange={(e) => {
-                  const v = Math.max(3, Math.min(20, Number(e.target.value)));
-                  setGridRows(v);
-                }}
-                className="w-10 h-7 rounded-lg bg-white/10 text-slate-200 text-center text-xs border-none outline-none"
-              />
-              <span>{language === 'zh' ? '列' : 'Cols'}</span>
-              <input
-                type="number" min={3} max={20}
-                value={gridCols}
+          <div className="flex flex-col items-center gap-2 w-full">
+            <div className="flex flex-col items-center gap-1 text-[10px] text-slate-500">
+              <div className="flex items-center gap-1">
+                <input
+                  type="number" min={3} max={20}
+                  value={gridRows}
+                  onChange={(e) => {
+                    const v = Math.max(3, Math.min(20, Number(e.target.value)));
+                    setGridRows(v);
+                  }}
+                  className="w-10 h-7 rounded-lg bg-white/10 text-slate-200 text-center text-xs border-none outline-none"
+                />
+                <span>{language === 'zh' ? '行' : 'Rows'}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <input
+                  type="number" min={3} max={20}
+                  value={gridCols}
                 onChange={(e) => {
                   const v = Math.max(3, Math.min(20, Number(e.target.value)));
                   setGridCols(v);
                 }}
                 className="w-10 h-7 rounded-lg bg-white/10 text-slate-200 text-center text-xs border-none outline-none"
               />
+              <span>{language === 'zh' ? '列' : 'Cols'}</span>
             </div>
-            <span className="w-px h-5 bg-white/10" />
+            </div>
+            <span className="w-8 h-px bg-white/10" />
             <button
               onClick={() => {
                 setCustomGrid(Array.from({ length: gridRows }, () => Array(gridCols).fill('.')));
@@ -658,7 +673,7 @@ export default function App() {
                 </div>
               </div>
             )}
-            <span className="w-px h-5 bg-white/10" />
+            <span className="w-8 h-px bg-white/10" />
             <button
               onClick={() => {
                 if (!customGrid) return;
@@ -681,6 +696,7 @@ export default function App() {
             )}
           </div>
         </div>
+      </div>
       )}
 
       {/* === 帮助弹窗 === */}
@@ -857,8 +873,8 @@ export default function App() {
 
               <div className="text-[9px] text-slate-600 leading-relaxed text-center px-2 select-text">
                 {language === 'zh'
-                  ? '如果你自制的地图足够有创意，可以加作者微信：Ch13025297643并分享地图码，作者会考虑将其加入游戏中，并在关卡下方署上你的名字，并给予3元红包。'
-                  : 'If your custom map is creative enough, add the author on WeChat: Ch13025297643 and share your map code. The author will consider adding it to the game, crediting you below the level, and giving you a ¥3 red packet.'}
+                  ? '如果你自制的地图足够有创意，可以加作者微信：Ch13025297643并分享地图码，作者会考虑将其加入游戏中，后续会增加地图贴图，祝你游玩愉快'
+                  : 'If your custom map is creative enough, add the author on WeChat: Ch13025297643 and share your map code. The author will consider adding it to the game. More map textures coming soon. Enjoy the game!'}
               </div>
             </motion.div>
           </motion.div>
